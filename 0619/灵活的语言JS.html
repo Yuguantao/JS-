@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+    </body>
+    <script>
+//        1.字面量
+        function checkUsername(){};
+        checkUsername();
+
+//        2.函数表达式
+        var checkUsername = function(){}
+        checkUsername();
+
+//        3.用对象收编变量
+        var checkObject = {
+            checkUsername:function(){}
+        }
+        checkObject.checkUsername();
+
+//        4.对象的另一种形式，函数也是对象，然后加属性
+        var checkObject = function(){
+
+            checkObject.checkUsername = function(){};
+        }
+
+//        5.是构造函数吗？不是
+        var checkObject = function(){
+            return{
+                checkUsername:function(){}
+            }
+        }
+        var CheckObject = checkObject();
+        CheckObject.checkUsername();
+
+//        6.是构造函数
+        var checkObject = function(){
+            return{
+                checkUsername:function(){}
+            }
+        }
+        var CheckObject =  new checkObject();
+        CheckObject.checkUsername();
+
+
+//        7.1 用一个检测类
+        var checkObject = function(){};
+        checkObject.prototype.checkUsername = function(){}
+
+//        7.2
+        var checkObject =function(){};
+        checkObject.prototype = {
+            checkObject:function(){},
+            checkEmail:function(){}
+        }
+
+        var CheckObject = new checkObject();
+
+        CheckObject.checkEmail();
+
+//        8.
+        var CheckObject = {
+            checkUsername:function(){
+                return this;
+            },
+            checkEmail:function(){
+                return this;
+            },
+            checkPassword:function(){
+                return this;
+            }
+        }
+
+        CheckObject.checkUsername();//返回的还是CheckObject这个对象。
+        CheckObject.checkUsername().checkEmail().checkPassword();//链式调用
+
+
+//        9.函数的祖先
+        Function.prototype.checkEmail = function(){
+            console.log('check email');
+        }
+        var checkObject = function(){};
+        checkObject.checkEmail();
+
+        var checkObject = new Function();
+        checkObject.checkEmail();
+    </script>
+</html>

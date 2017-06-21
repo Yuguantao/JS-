@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+    </body>
+    <script>
+        function People(name,age,sex){
+            this.name = name;
+            this.age = age;
+            this.sex = sex;
+        }
+        People.prototype.sayHello = function(){
+            console.log('My name is'+this.name);
+        }
+        People.prototypeeat = function(){
+            console.log('I\'m eating');
+        }
+
+        function Student(name,age,sex,id){
+
+            //子类用父类的方法，并且修改方法中的那个
+            //this为我们当前函数中的this
+            People.apply(this,arguments);
+            this.id = id;
+            this.constructor.apply(this,arguments);
+        }
+
+        //这种继承方式修改子类的原型，父类也跟着改
+        Student.prototype = People.prototype;
+        Student.prototype.sayHello = function(){
+            console.log('我在北京第一小学上学，我叫'+this.name);
+        }
+
+        var changkun = new Student('常坤',7,'男')
+    </script>
+</html>

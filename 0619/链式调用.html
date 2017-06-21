@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+    </body>
+    <script>
+
+        function CheckObject(){
+
+        }
+//        CheckObject.prototype.checkUsername = function(){
+//                return this;
+//        };
+//        CheckObject.prototype.checkPassword = function(){
+//                return this;
+//        };
+//        CheckObject.prototype.checkEmail = function(){
+//                return this;
+//        };
+
+        CheckObject.prototype = {
+            checkUsername:function(){
+                return this;
+            },
+            checkEmail:function(){
+                return this;
+            },
+            checkPassword:function(){
+                return this;
+            }
+        }
+        var checkObject = new CheckObject();
+        checkObject.checkUsername().checkPassword().checkEmail();
+    </script>
+</html>
