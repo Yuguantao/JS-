@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style>
+            *{
+                margin: 0;
+                padding: 0;
+            }
+            .Box{
+                width: 142px;
+                height: 300px;
+                position: absolute;
+                background-size: 100% 100%;
+                top: 100px;
+                left: 100px;
+            }
+        </style>
+    </head>
+    <body>
+    </body>
+    <script>
+        function Light(left){
+            this.name = null;
+            this.timer = 0;
+            this.left=left;
+            var newTimes=0;
+
+            this.init = function(){
+                this.box= document.createElement("div");
+                this.box.className = "Box";
+                this.box.style.left=this.left+"px";
+                this.box.style.backgroundImage = "url(image/r.png)";
+                document.body.appendChild(this.box);
+            }
+            this.init();
+
+            this.walk = function(){
+
+                var self = this;
+
+                timer = setInterval(function(){
+
+                    newTimes+=1;
+
+                    if(newTimes>10){
+
+                        self.box.style.backgroundImage = "url(image/y.png)";
+                        self.box.style.left = self.left+"px";
+                    }
+                    if(newTimes>20){
+                        self.die();
+                    }
+
+                },50)
+
+            }
+
+            this.walk();
+
+            this.die = function(){
+                this.box.style.backgroundImage = "url(image/g.png)";
+                this.box.style.left=this.left+"px";
+            }
+
+        }
+        setInterval(function(){
+            new Light(100);
+        },2000);
+    </script>
+</html>

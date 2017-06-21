@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+            }
+            html, body{
+                width: 100%;
+                height: 100%;
+            }
+            body{
+                background:url(image/timg.jpg);
+                background-size:100% 100%;
+            }
+            #Box{
+                width: 1000px;
+                height: 200px;
+                position: relative;
+                top: 60%;
+                left:0px;
+            }
+            .Left{
+                width: 180px;
+                height: 120px;
+                position: absolute;
+                background: url(image/jian.png);
+                background-position: 0px 0;
+                top: 30px;
+                left: 0;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="Box">
+            <!--<div class="Left"></div>-->
+        </div>
+    </body>
+    <script>
+        var Box = document.getElementById("Box");
+
+        function Skill(left,top,Box){
+            this.name = null;
+            this.left = left;
+            this.speed = 0;
+            this.timer = 0;
+            var newLeft = 0;
+
+            this.init = function(){
+//                this.box = document.createElement("div");
+//                this.box.className = "Box";
+                this.box1 = document.createElement("div");
+                this.box1.className = "Left";
+                this.box1.style.top = this.top+"px";
+                this.box1.style.left = this.left+"px";
+//                document.body.appendChild(this.box);
+                Box.appendChild(this.box1);
+            }
+            this.init();
+
+            this.walk = function(){
+                var self = this;
+
+                timer = setInterval(function(){
+                    newLeft += 15;
+
+                    if(newLeft>1000){
+//                        self.box1.style.display = "none";
+                        self.die();
+                    }
+                    self.box1.style.left = newLeft+"px";
+
+                    self.speed++;
+
+                    if(self.speed>4){
+                        self.speed=0;
+                    }
+                    self.box1.style.backgroundPositionX=-self.speed*167-30+"px";
+                    self.box1.style.backgroundPositionY=top+"px";
+
+                },200)
+            }
+            this.walk();
+
+            this.die = function(){
+                clearInterval(this.timer);
+                Box.removeChild(this.box1);
+            }
+        }
+
+        setInterval(function(){
+             new Skill(0,-80,Box);
+        },3000);
+
+    </script>
+</html>

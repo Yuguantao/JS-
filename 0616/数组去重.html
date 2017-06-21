@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+    </head>
+    <body>
+    </body>
+    <script>
+//        var res = [prompt('请输入一个数组')];
+//        var res = [];
+//
+//        var arr = [1, 'a', 'a', 'b', 'd', 'e', 'e', 1, 0];
+//        for(var i = 0; i < arr.length; i++){
+//            for(var j = 0;j<arr.length;j++){
+//                if(arr[i] !== arr[i+1]){
+//                    res.push(arr[i]);
+//                }
+//            }
+//        }
+//        console.log(res);
+
+
+//        function arr1(arr){
+//            arr.sort();
+//            var re=[arr[0]];
+//            for(var i=1;i<arr.length;i++){
+//                if(arr[i]!==re[re.length-1]){
+//                    re.push(arr[i]);
+//
+//                }
+//            }
+//            return re;
+//        }
+//        console.log(1,11,3,3,3,4,4);
+
+        function Array(){
+
+        }
+
+        Array.prototype = function()
+        {
+            this.sort();
+            var re=[this[0]];
+            for(var i = 1; i < this.length; i++)
+            {
+                if( this[i] !== re[re.length-1])
+                {
+                    re.push(this[i]);
+                }
+            }
+            return re;
+        }
+//
+        console.log(Array(1,1,1,13,4,4,5));
+
+
+
+
+
+    </script>
+</html>

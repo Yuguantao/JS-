@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title>节奏大师</title>
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+            }
+            html,body{
+                width: 100%;
+                height: 100%;
+            }
+            #Box{
+                background-color: darkgrey;
+                position: relative;
+                top: 10px;
+                left: 28%;
+                width: 600px;
+                height: 600px;
+            }
+            .key{
+                width:150px;
+                height: 40px;
+                background:#333;
+                position: absolute;
+            }
+            .across{
+                width: 600px;
+                height: 40px;
+
+            }
+        </style>
+    </head>
+    <body>
+        <div id="Box">
+            <audio src="image/super.mp3" autoplay="autoplay" loop="loop" id="Bgm"></audio>
+            <audio src="image/5080.mp3" id="boom"></audio>
+            <div class="across">
+
+            </div>
+        </div>
+    </body>
+    <script>
+        var Box = document.getElementById('Box');
+        var Bgm = document.getElementById('Bgm');
+        Bgm.volume = 0.5;
+        function Key(top,left,r,g,b){
+            this.left = left;
+            this.top = top;
+            this.timer = 0;
+            this.speed = 0;
+            this.dom = 0;
+            this.score = 0;
+            this.color = 0;
+            this.r = r;
+            this.g = g;
+            this.b = b;
+            this.init();
+            this.drop();
+
+        }
+
+        Key.prototype.init = function(){
+
+            this.dom = document.createElement('div');
+            this.dom.className = 'key';
+            this.dom.style.left = this.left +'px';
+            this.dom.style.top = this.top +'px';
+            this.dom.style.backgroundColor="rgb("+this.r+","+this.g+","+this.b+")";
+            Box.appendChild(this.dom);
+
+            var self = this;
+
+            this.dom.onmouseover = function(){
+                self.die();
+            }
+        }
+
+        Key.prototype.drop = function(){
+
+            var self = this;
+            this.timer = setInterval(function(){
+
+                self.top += 5;
+                if(self.top>560){
+//                    self.dom.style.display="none";
+                    game.dieKey(self);
+                }
+
+                self.dom.style.left = self.left +'px';
+                self.dom.style.top = self.top +'px';
+
+            },20)
+
+        }
+
+        Key.prototype.die = function(){
+              game.music.play();
+              clearInterval(this.timer);
+              Box.removeChild(this.dom);
+        }
+
+
+
+        function Game(){
+            this.timer = 0;
+            this.score = 0;
+            this.misscount = 0;
+            this.scoreDom = null;
+            this.keys = [];
+            this.music = null;
+
+            this.init();
+            this.createKey();
+        }
+
+        Game.prototype.init = function(){
+            this.music = document.getElementById('boom');
+        }
+
+        Game.prototype.createKey = function(){
+            var self = this;
+            this.timer = setInterval(function(){
+                var key = new Key(0,arr[parseInt(Math.random()*4)],parseInt(Math.random()*256),parseInt(Math.random()*256),parseInt(Math.random()*256));
+
+                self.keys.push(key);
+            },500);
+        }
+
+        Game.prototype.dieKey = function(key){
+
+            for(var i = 0;i<this.keys.length;i++){
+                if(this.keys[i] === key){
+                    this.keys[i].die();
+                    this.keys.splice(i,1);
+                    return;
+                }
+            }
+        }
+
+        Game.prototype.die = function(){
+//            clearInterval(this.timer);
+            for (var i = 0; i < this.keys.length; i++) {
+                this.keys[i].die();
+                this.keys.splice(i, 1);
+            }
+        }
+
+        var game = new Game();
+
+        var arr = [0,150,300,450];
+
+//        timer = setInterval(function(){
+//
+//            new Key(0,arr[parseInt(Math.random()*4)],parseInt(Math.random()*256),parseInt(Math.random()*256),parseInt(Math.random()*256));
+//
+//        },500)
+
+
+
+    </script>
+</html>

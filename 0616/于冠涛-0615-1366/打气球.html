@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+            }
+            html,body{
+                width: 100%;
+                height: 100%;
+            }
+            body{
+                background: url(image/bg.jpg);
+                background-size: cover;
+                overflow: hidden;
+            }
+            div{
+                background:url(image/ballon.png) no-repeat;
+                width: 96px;
+                height: 120px;
+                position: absolute;
+            }
+            #Aim{
+                width:48px;
+                height:48px;
+                background: url(image/aim.png);
+                background-size: 100% 100%;
+                position: absolute;
+                z-index:999;
+            }
+        </style>
+    </head>
+    <body>
+        <audio src="image/bgm.mp3" id="Bgm" autoplay="autoplay"></audio>
+        <audio src="image/c.wav" id="boom"></audio>
+        <div id="Aim">
+
+        </div>
+    </body>
+    <script>
+        document.getElementById("Bgm").volume = 0.5;
+
+        var Aim = document.getElementById('Aim');
+
+        document.onmousemove = function(ev){
+            ev = ev||window.event;
+
+            Aim.style.left = ev.clientX-24+"px";
+            Aim.style.top = ev.clientY-24+"px";
+        }
+
+        function Ballon(left){
+
+            this.speed = 10;
+            this.bottom = 0;
+            this.left = left;
+            this.dom = null;
+            this.timer = 0;
+            this.score = 0;
+
+            this.init();
+            this.fly();
+
+        }
+
+        Ballon.prototype.init = function(){
+            this.dom = document.createElement('div');
+            this.dom.style.left = this.left + 'px';
+            this.dom.style.bottom = this.bottom + 'px';
+            document.body.appendChild(this.dom);
+
+            this.score = parseInt(Math.random()*7)+1;
+            var x = -(this.score-1)%4*96;
+            var y = -parseInt((this.score-1)/4)*120;
+            this.dom.style.backgroundPositionX = x +'px';
+            this.dom.style.backgroundPositionY = y +'px';
+
+            var self = this;
+            this.dom.onmousedown = function(){
+                self.die();
+                game.score += self.score;
+            }
+
+        }
+
+        Ballon.prototype.fly = function(){
+
+            var self = this;
+            this.timer = setInterval(function(){
+
+                self.bottom += 3;
+                var bodyHeight = document.body.clientHeight||document.documentElement.clientHeight;
+                if(self.bottom>bodyHeight-120){
+                    game.dieBallon(self);
+                    game.misscount++;
+                    if(game.misscount>2){
+                        game.die();
+                        game.dieBallon(self.ballons);
+                    }
+                }
+
+                self.dom.style.bottom = self.bottom +'px';
+            },50);
+        }
+
+        Ballon.prototype.die = function(){
+
+            game.music.play();
+            clearInterval(this.timer);
+            document.body.removeChild(this.dom);
+        }
+
+
+        function Game(){
+
+            this.timer = 0;
+            this.score = 0;
+            this.misscount = 0;
+            this.scoreDom = null;
+            this.ballons = [];
+            this.music = null;
+
+            this.init();
+            this.createBallon();
+        }
+
+        Game.prototype.init = function(){
+            this.music = document.getElementById('boom');
+        }
+
+        Game.prototype.createBallon = function(){
+
+            var self = this;
+            this.timer = setInterval(function(){
+
+                var bodyWidth = document.documentElement.clientWidth||document.body.clientWidth;
+                var ballon = new Ballon(Math.random()*bodyWidth-96);
+                self.ballons.push(ballon);
+            },500)
+        }
+
+        Game.prototype.dieBallon = function(ballon){
+
+            for(var i = 0;i<this.ballons.length;i++){
+
+                if(this.ballons[i] === ballon){
+                    this.ballons[i].die();
+                    this.ballons.splice(i,1);
+                    return;
+                }
+            }
+        }
+
+        Game.prototype.die = function(){
+            clearInterval(this.timer);
+            for(var i = 0;i<this.ballons.length;i++){
+                this.ballons[i].die();
+                this.ballons.splice(i,1);
+            }
+            alert('你的分数是'+this.score);
+        }
+
+        var game = new Game();
+    </script>
+</html>

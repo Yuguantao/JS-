@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style>
+            div{
+                position: absolute;
+                width: 86px;
+                height: 86px;
+                border-radius: 50%;
+                font-size: 30px;
+                font-weight: bold;
+                color: white;
+                background:url(image/apple1.png);
+                background-size: cover;
+                text-align: center;
+                line-height: 86px;
+            }
+            body{
+                background-color: lightgreen;
+            }
+        </style>
+    </head>
+    <body>
+        <h1 id="score" class="score"> </h1>
+    </body>
+    <script>
+        var miss = 0;
+         function Apple(char,top,left){
+
+             this.top = top;
+             this.left = left;
+             this.char = char;
+             this.dom = null;
+             this.timer = 0;
+
+             this.init = function(){
+
+                 this.dom=document.createElement('div');
+                 this.dom.style.left = this.left+'px';
+                 this.dom.style.top = this.top+'px';
+                 this.dom.innerText = this.char;
+                 document.body.appendChild(this.dom);
+
+             }
+
+             this.down = function(){
+
+                 var self = this;
+                 this.timer = setInterval(function(){
+                     self.top +=3;
+                     if(self.top>500){
+                         game.dieApple(self.char);
+                         miss++;
+                         if(miss>5){
+                             game.end();
+                         }
+                     }
+                     self.dom.style.top = self.top +'px';
+                 },100)
+             }
+
+             this.die = function(){
+
+                clearInterval(this.timer);
+                document.body.removeChild(this.dom);
+             }
+
+             this.init();
+             this.down();
+
+         }
+
+
+         var game = new Game();
+         game.init();
+         game.createApple();
+         game.bindEvent();
+//         game.end();
+
+         function Game(){
+
+             this.timer = 0;
+             this.score = 0;
+             this.scoreDom = null;
+             this.level = 1;
+             this.chars = [];
+             this.apples = [];
+
+             this.init = function(){
+
+                 this.scoreDom = document.getElementById('score');
+                 for(var i = 0;i<26;i++){
+                     this.chars.push(String.fromCharCode(97+i));
+                 }
+             }
+
+             this.createApple = function(){
+                 var self = this;
+                 this.timer = setInterval(function(){
+
+                     var char = self.chars[parseInt(Math.random()*self.chars.length)];
+                     var top = 0;
+                     var clientWidth = document.documentElement.clientWidth||document.body.clientWidth;
+                     var left = Math.random()*clientWidth-20;
+                     var apple = new Apple(char,top,left);
+                     self.apples.push(apple);
+                 },2000)
+             }
+
+             this.bindEvent = function(){
+
+                 var self = this;
+                 document.body.onkeydown = function(){
+                     event = event||window.event;
+                     self.dieApple(event.key,true);
+                 }
+             }
+
+             this.dieApple = function(char,hit){
+
+                 for(var i = 0;i<this.apples.length;i++){
+
+                     if(char === this.apples[i].char){
+                        this.apples[i].die();
+                        if(hit){
+                            this.addScore();
+                        }
+                        this.apples.splice(i,1);
+                        break;
+                     }
+                 }
+             }
+
+             this.addScore = function(){
+
+                 this.score++;
+                 this.scoreDom.innerText = this.score;
+             }
+
+             this.end = function(){
+                 clearInterval(this.timer);
+                 alert(this.score);
+             }
+         }
+    </script>
+</html>
