@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        html, body, .container, .page{
+            width: 100%;
+            height: 100%;
+            /*overflow: hidden;*/
+        }
+        html, body{
+            /*overflow: hidden;*/
+        }
+        .container {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .page{
+            background:hsl(181,45%,52%);
+        }
+        .page0{background: hsl(181,45%,52%);}
+        .page1{background: hsl(181,55%,52%);}
+        .page2{background: hsl(181,65%,52%);}
+        .page3{background: hsl(181,75%,52%);}
+        .page4{background: hsl(181,85%,52%);}
+    </style>
+</head>
+<body>
+    <div class="container"id="container">
+        <div class="page page0">
+            <h1>0</h1>
+        </div>
+        <div class="page page1">
+            <h1>1</h1>
+        </div>
+        <div class="page page2">
+            <h1>2</h1>
+        </div>
+        <div class="page page3">
+            <h1>3</h1>
+        </div>
+        <div class="page page4">
+            <h1>4</h1>
+        </div>
+    </div>
+</body>
+<script>
+    var index=0;
+    var container=document.getElementById("container");
+
+    var mousewheelHandler=function(e){
+//        console.log("1")
+
+        e=e||window.event;
+
+        if(e.preventDefault){
+            e.preventDefault();
+        }else{
+            e.returnValue=false;
+        }
+
+        if(e.wheelDelta){
+            var direction =e.wheelDelta>0?1:-1;
+        }else{
+            var direction =e.detail>0?-1:1;
+        }
+
+        index-=direction;
+
+        if(index<0){
+            index=0;
+        }else if(index>4){
+            index=4;
+        }
+
+        container.style.top=-index*100+"%";
+    }
+
+    document.onmousewheel=mousewheelHandler;
+
+    try{
+        document.addEventListener("DOMMouseScroll",mousewheelHandler,false);
+    }catch(error){
+
+    }
+</script>
+</html>
