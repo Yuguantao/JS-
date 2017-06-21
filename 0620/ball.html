@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+            }
+            .board{
+                width: 200px;
+                height: 4px;
+                position: absolute;
+                background-color: #666;
+                border-radius: 2px;
+            }
+            .ball{
+                width: 30px;
+                height: 30px;
+                border-radius: 50%;
+                background-color: orangered;
+                position: absolute;
+            }
+        </style>
+    </head>
+    <body>
+
+        <script>
+            function Board(top, left){
+                this.top = top;
+                this.left = left;
+                this.dom = null;
+
+                this.init();
+                this.render();
+                this.bindEvent();
+
+            }
+            Board.prototype.init = function(){
+                this.dom = document.createElement('div');
+                this.dom.className = 'board';
+                document.body.appendChild(this.dom);
+
+            }
+            Board.prototype.render = function () {
+                this.dom.style.top = this.top +'px';
+                this.dom.style.left = this.left +'px';
+            }
+            Board.prototype.bindEvent = function () {
+
+                var self = this;
+                document.onmousemove = function(event){
+                    event = event||window.event;
+                    self.left = event.clientX;
+                    self.render();
+                }
+            }
+
+
+            var height = document.documentElement.clientHeight;
+            var width = document.documentElement.clientWidth;
+
+            var board = new Board(height-4-60, (width-200)/2);
+
+
+            function Ball(top, left, deltaX, deltaY){
+                this.top = top;
+                this.left = left;
+                this.speed = 30;
+                this.deltaX = deltaX;
+                this.deltaY = deltaY;
+                this.d = 30;
+                this.dom = null;
+                this.timer = 0;
+
+                this.init();
+                this.move();
+                this.render();
+            }
+            Ball.prototype.init = function(){
+                this.dom = document.createElement('div');
+                this.dom.className = 'ball';
+                document.body.appendChild(this.dom);
+            }
+            Ball.prototype.move = function(){
+                var self = this;
+                this.timer = setInterval(function(){
+                    self.left += self.deltaX;
+                    self.top += self.deltaY;
+
+                    if(self.left < 0){
+                        self.left = 0;
+                    }
+                    if(self.left > width-self.d){
+                        self.left = width-self.d;
+                    }
+                    if(self.top<0){
+                        self.top = 0;
+                    }
+                    if(self.top>board.top - self.d){
+                        self.top = board.top - self.d;
+                    }
+
+                    if(self.left<=0||self.left>=width-self.d){
+                        self.deltaX = -self.deltaX;
+                    }
+
+                    if(self.top<=0){
+                        self.deltaY = -self.deltaY;
+                    }
+
+                    if(self.top>=board.top-self.d){
+                        if(self.left+self.d/2>=board.dom.offsetLeft&&self.left+self.d/2<=board.dom.offsetLeft+200){
+
+                            self.deltaY = -self.deltaY;
+
+                        }else{
+                            clearInterval(self.timer);
+                            alert('Game Over');
+                        }
+                    }
+                    self.render();
+
+                },this.speed)
+            }
+            Ball.prototype.render = function(){
+                this.dom.style.left = this.left +'px';
+                this.dom.style.top = this.top +'px';
+            }
+
+            new Ball(100,100,5,5);
+            new Ball(100,100,6,6);
+            new Ball(100,100,7,7);
+        </script>
+    </body>
+</html>
