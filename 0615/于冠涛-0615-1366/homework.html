@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style>
+            div{
+                width:86px;
+                height: 86px;
+                background-image:url(image/apple1.png);
+                background-size:100% 100%;
+                position: absolute;
+                top: 0;
+                left: 0;
+                font-size:40px;
+                color:white;
+                line-height:86px;
+                text-align:center;
+            }
+            #oSpan{
+                width:80px;
+                height:40px;
+                background-color:gold;
+                position: absolute;
+                top:50px;
+                left:87%;
+                font-size:20px;
+                color:black;
+                line-height:40px;
+                text-align:center;
+            }
+            #oDiv{
+                width:80px;
+                height:40px;
+                background:gold;
+                position: absolute;
+                top:100px;
+                left:87%;
+                font-size:20px;
+                color:black;
+                line-height:40px;
+                text-align:center;
+            }
+            .oSpan{
+                 width: 40px;
+                 height: 40px;
+                 background-color:darkgrey;
+                 font-size:14px;
+                 line-height:40px;
+                 text-align:center;
+                 position: absolute;
+                 top:50px;
+                 left:84%;
+             }
+            .oDiv{
+                width: 40px;
+                height: 40px;
+                background:darkgrey;
+                font-size:14px;
+                line-height:40px;
+                text-align:center;
+                position: absolute;
+                top:100px;
+                left:84%;
+                color:black;
+            }
+            input{
+                width:100px;
+                height: 40px;
+                font-size:15px;
+                position: absolute;
+                top: 50px;
+                left: 8%;
+            }
+        </style>
+    </head>
+    <body>
+        <span class="oSpan">
+            得分:
+        </span>
+        <span id="oSpan">
+
+        </span>
+        <input id="oBtn" type="button"value="开始">
+        <div id="oDiv">
+
+        </div>
+        <div class="oDiv">
+            Miss
+        </div>
+    </body>
+    <script>
+
+        var oSpan=document.getElementById("oSpan");
+        var oBtn=document.getElementById("oBtn");
+        var oDiv=document.getElementById("oDiv");
+
+        var num=0;
+        var miss=0;
+
+        function Apple(top, left, speed){
+//             this.name=null;
+             this.top=top;
+             this.left=left;
+             this.speed=speed;
+             this.timer=0;
+             this.step=0;
+             this.box=document.createElement("div");
+
+             this.init=function(){
+                 this.box.className="box";
+                 this.box.style.left=this.left+"px";
+                 this.box.style.top=this.top+"px";
+                 document.body.appendChild(this.box);
+
+                var arr=['q','w','e','r','t','y','u','i','o','p','a','s','d','f','g','h','j','k','l','z','x','c','v','b','n','m'];
+
+                 this.box.innerText=arr[parseInt(Math.random()*26)];
+
+
+             }
+
+
+             this.drop=function(){
+
+                 var self=this;
+
+                 timer=setInterval(function(){
+                     self.top++;
+                     if(self.top>480){
+
+                         self.die();
+                         miss++;
+                         oDiv.innerText=miss;
+                     }
+                     self.box.style.top=self.top+"px";
+                 },10);
+
+                 document.addEventListener("keydown",function(eve){
+
+                     eve=eve||window.event;
+
+                     if(eve.key == self.box.innerText){
+                         self.die();
+                         num+=2;
+                         if(num>20){
+
+                         }
+                         oSpan.innerText=num;
+                     }
+                 }, false);
+
+             }
+
+
+             this.die = function(){
+                 clearInterval(this.timer);
+                 document.body.removeChild(this.box);
+             }
+
+        }
+        oBtn.onclick=function(){
+            timer=setInterval(function(){
+                var oAapple=new Apple(0,Math.random()*1000)
+                oAapple.init();
+                oAapple.drop();
+            },1600);
+            oBtn.style.display="none";
+        }
+
+    </script>
+</html>

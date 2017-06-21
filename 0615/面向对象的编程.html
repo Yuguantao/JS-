@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+            }
+            div{
+                width: 80px;
+                height: 108px;
+                background-image: url(./images/girl.png);
+                background-repeat: no-repeat;
+                background-position: 0px -218px;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        </style>
+    </head>
+    <body>
+
+    </body>
+    <script>
+        /**
+         * 小女孩对象
+         * 属性：
+         *  dom 小女孩这个DOM实体
+         *  left 位置
+         *  top
+         *  speed 速度
+         *  step 步子
+         *  timer 定时器
+         *
+         */
+        function Girl(top,left,speed){
+            this.name=null;
+            this.top=top;
+            this.left=left;
+            this.speed=speed;
+            this.timer=0;
+            this.step=0;
+
+            this.init=function(){
+               this.dom=document.createElement("div") ;
+               this.dom.style.left=this.left+"px";
+               this.dom.style.top=this.top+"px";
+               document.body.appendChild(this.dom);
+
+//               var head = document.createElement('div');
+//               this.dom.appendChild(head);
+
+            }
+            this.walk=function(){
+                var self=this;
+                this.timer=setInterval(function(){
+                    self.step++;
+                    if(self.step>7){
+                        self.step=0;
+                    }
+
+                    self.dom.style.backgroundPositionX=-self.step*79+"px";
+                    self.left+=4;
+
+                    if(self.left>1000){
+                        self.die();
+                    }
+
+                    self.dom.style.left=self.left+"px";
+
+                },this.speed)
+            }
+            this.die=function(){
+                clearInterval(this.timer);
+                document.body.removeChild(this.dom);
+            }
+
+            this.init();
+            this.walk();
+        }
+        setInterval(function () {
+            new Girl(parseInt(Math.random()*300),Math.random()*400,Math.random()*100,Math.random()*1000)
+        },1000)
+    </script>
+</html>

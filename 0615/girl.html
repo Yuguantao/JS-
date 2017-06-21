@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+            }
+            div{
+                width: 80px;
+                height: 108px;
+                background-image: url(./images/girl.png);
+                background-repeat: no-repeat;
+                background-position: 0px -218px;
+                position: absolute;
+                top: 0;
+                left: 0;
+            }
+        </style>
+    </head>
+    <body>
+    </body>
+    <script>
+        var oGirl=document.createElement("div");
+//        oGirl.style.background=coral;
+            document.body.appendChild(oGirl);
+//            var timer;
+//            var newLeft=0;
+//            timer=setInterval(function(){
+//                newLeft+=80;
+//                if(newLeft>560){
+//                    newLeft=0;
+//                }
+//                oGirl.style.backgroundPositionX=-newLeft+"px";
+//            },500);
+
+        var step=0;
+        var newLeft=0;
+        setInterval(function(){
+            step++;
+            if(step>7){
+                step=0;
+            }
+            oGirl.style.backgroundPositionX=-79*step+"px";
+            newLeft+=4;
+
+            if(newLeft>200){
+                newLeft=0;
+            }
+
+            oGirl.style.left=newLeft+"px";
+
+        },100)
+    </script>
+</html>

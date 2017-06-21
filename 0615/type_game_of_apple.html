@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style media="screen">
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html, body {
+        height: 100%;
+        width: 100%;
+      }
+      body {
+        background: lightgreen;
+      }
+      div {
+        position: absolute;
+        color: white;
+        font-size: 26px;
+        font-weight: bold;
+        width: 35px;
+        height: 35px;
+        text-align: center;
+        border-radius: 50%;
+      }
+      .score {
+        color: coral;
+      }
+    </style>
+  </head>
+  <body>
+    <h1 id="score" class="score">0</h1>
+    <script type="text/javascript">
+      function Apple (char, top, left) {
+        this.char = char;
+        this.top = top;
+        this.left = left;
+        this.dom = null;
+        this.timer = null;
+        this.init = function() {
+          this.dom = document.createElement('div');
+          this.dom.style.background = "red";
+          this.dom.style.top = this.top + 'px';
+          this.dom.style.left = this.left + 'px';
+          this.dom.innerText = this.char;
+          document.body.appendChild(this.dom);
+        }
+        this.down = function() {
+          var self = this;
+          this.timer = setInterval(function(){
+            self.top += 4;
+            if (self.top > 600) {
+              game.removeApple(self.char);
+            }
+            self.dom.style.top = self.top + 'px';
+          }, 30);
+        }
+        this.die = function() {
+          clearInterval(this.timer);
+          document.body.removeChild(this.dom);
+        }
+        this.init();
+        this.down();
+      }
+
+      function Game() {
+        this.chars = [];
+        //全局苹果数组
+        this.apples = [];
+        this.score = 0;
+        this.oScore = null;
+        this.init = function() {
+          this.oScore = document.getElementById('score');
+          //生成a-z的数组
+          for (var i = 0; i < 26; i++) {
+            this.chars.push(String.fromCharCode(65+i));
+          }
+        }
+        this.run = function(){
+          var self = this;
+          setInterval(function() {
+            var char = self.chars[parseInt(Math.random()*self.chars.length)];
+            var width = document.documentElement.clientWidth;
+            console.log(width);
+            var left = Math.random()*(width-10)+10;
+            var apple = new Apple(char, 0, left);
+            self.apples.push(apple);
+          }, 500);
+        }
+        this.bindEvent = function() {
+          var self = this;
+          document.body.onkeydown = function(event){
+            event = event || window.event;
+            self.removeApple(event.key, true)
+          }
+        }
+        /**
+         * 移除苹果
+         * @param  {[type]} char [description]
+         * @param  {[type]} hit  [description] 是否打中
+         * @return {[type]}      [description]
+         */
+        this.removeApple = function(char, hit) {
+            for (var i = 0; i < this.apples.length; i++) {
+              if (char === this.apples[i].char) {
+                if (hit === true) {
+                  this.score++;
+                  this.oScore.innerText = this.score;
+                }
+                this.apples[i].die();
+                this.apples.splice(i, 1);
+                return;
+              }
+            }
+        }
+        this.init();
+        this.run();
+        this.bindEvent();
+      }
+      var game = new Game();
+    </script>
+  </body>
+</html>
