@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <title></title>
+        <style>
+            *{
+                padding: 0;
+                margin: 0;
+            }
+            .smallPic{
+                width: 350px;
+                height: 350px;
+                position:relative;
+                background:url(image/1.jpg) round;
+                margin:50px;
+                border:1px solid gray;
+            }
+
+            .smallPic .zoom{
+                width:175px;
+                height:175px;
+                background-color: #FEDE4E;
+                position: absolute;
+                opacity:0.5;
+                top:0;
+                left:0;
+                display:none;
+            }
+            .bigPic{
+                width: 400px;
+                height: 400px;
+                position:absolute;
+                border:1px solid gray;
+                background:url(image/1-1.jpg);
+                top:20px;
+                left:490px;
+                display:none;
+
+            }
+            #oUl{
+                margin-top:-25px;
+                margin-left:50px;
+            }
+            #oUl li{
+                float:left;
+                width: 80px;
+                height: 80px;
+                border:1px solid rgba(255,255,255,0);
+                list-style:none;
+                margin-right:8px;
+            }
+            #oUl li.current{
+                border:1px solid red;
+            }
+            img{
+                width: 80px;
+                height: 80px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="smallPic" class="smallPic">
+            <div id="zoom" class="zoom"></div>
+        </div>
+        <ul id="oUl">
+            <li><img src="image/591158e2N2369ff7f (2).jpg" alt=""></li>
+            <li><img src="image/591158e7Nb0a83411 (2).jpg" alt=""></li>
+            <li><img src="image/591158edNc6a8df34 (2).jpg" alt=""></li>
+            <li><img src="image/591158f2N1d8ac381 (2).jpg" alt=""></li>
+        </ul>
+        <div id="bigPic" class="bigPic">
+
+        </div>
+    </body>
+    <script>
+        var smallPic=document.getElementById("smallPic");
+        var bigPic=document.getElementById("bigPic");
+        var zoom=document.getElementById("zoom");
+        var oUl=document.getElementById("oUl");
+        var oLi=oUl.getElementsByTagName("li");
+
+        var rate=350/800;
+
+        smallPic.onmouseover=function(){
+            bigPic.style.display="block";
+            zoom.style.display="block";
+        }
+        smallPic.onmouseout=function(){
+            bigPic.style.display="none";
+            zoom.style.display="none";
+        }
+        smallPic.onmousemove=function(event){
+
+            event=event||window.event;
+
+            var scrollTop=document.body.scrollTop||document.documentElement.scrollTop;
+            var scrollLeft=document.body.scrollLeft||document.documentElement.scrollLeft;
+
+            var x=event.clientX-(getAllLeft(smallPic)-scrollLeft)-87;
+            var y=event.clientY-(getAllTop(smallPic)-scrollTop)-87;
+
+            if(x<0)x=0;
+            if(y<0)y=0;
+            if(x>smallPic.clientWidth-zoom.clientWidth){
+                x=smallPic.clientWidth-zoom.clientWidth;
+            }if(y>smallPic.clientHeight-zoom.clientHeight){
+                y=smallPic.clientHeight-zoom.clientHeight;
+            }
+
+            var X=x/rate;
+            var Y=y/rate;
+
+            zoom.style.left=x+"px";
+            zoom.style.top=y+"px";
+
+            bigPic.style.backgroundPositionX=-X+"px";
+            bigPic.style.backgroundPositionY=-Y+"px";
+
+
+            function getAllLeft(obj){
+
+                var allLeft=obj.offsetLeft;
+
+                var currentObj=obj;
+
+                if(currentObj==currentObj.offsetParent){
+                    allLeft+=currenObj.offsetLeft;
+                }
+                return allLeft;
+            }
+            function getAllTop(obj){
+                var allTop=obj.offsetTop;
+
+                var currentObj=obj;
+
+                if(currentObj==currentObj.offsetParent){
+                    allTop+=currenObj.offsetTop;
+                }
+                return allTop;
+            }
+        }
+        for(var i=0;i<oLi.length;i++){
+            oLi[i].index=i;
+            oLi[i].onmouseover=function(){
+                for(var j=0;j<oLi.length;j++){
+                    oLi[j].className="";
+                    smallPic.style.backgroundImage="url(image/"+(j+1)+".jpg)";
+                    bigPic.style.backgroundImage="url(image/"+(j+1)+"-1.jpg)";
+                }
+                this.className="current";
+                smallPic.style.backgroundImage="url(image/"+(this.index+1)+".jpg)";
+                bigPic.style.backgroundImage="url(image/"+(this.index+1)+"-1.jpg)";
+            }
+        }
+    </script>
+</html>
