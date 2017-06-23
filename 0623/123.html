@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h1 id="biaoti">====</h1>
+        <input type="button" id="obtn" value='按我异步读取'>
+    </body>
+    <script>
+        var biaoti = document.getElementById('biaoti');
+        var btn = document.getElementById('obtn');
+
+        btn.onclick=function(){
+            var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function(){
+            if(xhr.readyState == 4){
+                biaoti.innerHTML = xhr.responseText;
+            }
+        }
+
+
+        xhr.open('get','./php/a.txt',true)
+        xhr.send(null);
+
+        console.log('嘻嘻嘻嘻嘻');
+        console.log('嘻嘻嘻嘻嘻');
+        console.log('嘻嘻嘻嘻嘻');
+    }
+    </script>
+</html>
