@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="js/jquery-1.12.3.min.js"></script>
+  <script src="js/jquery-picchange.js"></script>
+  <script>
+//    //实现picbofang()方法
+//    $.picbofang = function(){
+//
+//      var changepic = function() {
+//        //获得当前图片的序号
+//        var picid = $('img').attr('src').substr(7, 1);
+////      console.log(picid);
+//        var nextid = ++picid;
+//        if (nextid == 5) {
+//          nextid = 0;
+//        }
+//        $("img").attr('src', "images/" + nextid + ".jpg");
+//
+//      };
+//      setInterval(changepic, 1000);
+//    };
+
+    //页面加载完毕调用一个插件方法，使得图片依次播放
+    $(function(){
+      $.picbofang();
+    });
+  </script>
+</head>
+<body>
+<h2>插件开发之图片切换</h2>
+<img src="images/0.jpg" alt="" width="300" height="300">
+</body>
+</html>

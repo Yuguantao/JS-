@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<div id="box">
+		<p>哈哈</p>
+		<p>嘻嘻</p>
+	</div>
+
+	<script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
+	<script type="text/javascript">
+		// var $obj = $("<p>哈哈</p>");
+		// $obj.css("background-color","red");
+		// $("#box").append($obj);
+
+		//$("#box").append("<p>么么哒</p>")
+
+		//于，追加于，表示被动
+		//儿子.appendTo(父亲)
+		//$("<p>么么哒</p>").appendTo($("#box"));
+
+
+		//prepend就是在第一个儿子添加
+		//$("#box").prepend("<p>么么哒</p>")
+
+		$("<p>么么哒啊！</p>").prependTo($("#box"));
+	</script>
+</body>
+</html>

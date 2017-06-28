@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <script src="js/jquery-1.12.3.min.js"></script>
+  <script>
+    $(function(){
+      $("h2").css('color', 'red');
+
+      //给jquery对象丰富插件方法
+      $.fn.abc = function(){
+        console.log("abcabcabc");
+      };
+      $.fn.extend({
+        aaa:function(){
+          console.log('aaaa');
+        },
+        ccc:function(){
+          console.log('ccc');
+        }
+      })
+      $('h2').abc();
+      $('h2').aaa();
+      $('h2').ccc();
+
+      //给"$对象"丰富插件方法
+      $.hello = function(){
+        console.log("hello");
+      };
+      $.hello();
+
+      var jn = {
+        f1:function(){
+          console.log("f1");
+        },
+        f2:function(){
+          console.log("f2");
+        }
+      };
+      $.extend(jn);
+      $.f1();
+      $.f2();
+    });
+  </script>
+</head>
+<body>
+<h2>插件开发</h2>
+</body>
+</html>

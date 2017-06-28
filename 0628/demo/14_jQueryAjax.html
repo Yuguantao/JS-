@@ -1,0 +1,40 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+	<meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+	<title>Document</title>
+</head>
+<body>
+	<h1></h1>
+	<input type="button" value="按我" />
+
+	<script type="text/javascript" src="js/jquery-1.12.3.min.js"></script>
+	<script type="text/javascript">
+		$("input").click(function(){
+			//点击按钮之后发出Ajax请求
+			$.get("a.json",function(data){
+				var a = data.content[2].name;
+				$("h1").html(a);
+			});
+
+			// $.ajax("b.json",{
+			// 	//请求类型
+			// 	"type"	:   "get",
+			// 	//传到服务器上的数据
+			// 	"data"	: 	{
+			// 		"name":"xiaoming",
+			// 		"age" :10
+			// 	},
+			// 	//成功做的事情
+			// 	"success" : function(data){
+			// 		alert(typeof data);
+			// 	},
+			// 	//错误做的事情
+			// 	"error"	:   function(XMLHttpRequest, textStatus, errorThrown){
+			// 		alert(errorThrown);
+			// 	}
+			// });
+		})
+	</script>
+</body>
+</html>

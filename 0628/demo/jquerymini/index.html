@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="apple">apple</div>
+<ul>
+    <li>a</li>
+    <li>b</li>
+</ul>
+
+<script src="jquery-mini.js"></script>
+<script>
+    $('li').css('color', 'red');
+    $('#apple').attr('class','orange');
+    $('li').each(function(m,n){
+        //m 分别代表每个li的下标
+        //this 和 n代表意思一致，分别代表每个li的dom对象
+        this.style.backgroundColor = "blue";
+    });
+</script>
+</body>
+</html>
