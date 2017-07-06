@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div{
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  <input type="button" value="show">
+  <input type="button" value="hide">
+  <input type="button" value="toggle">
+  <input type="button" value="show(1000)">
+  <input type="button" value="hide(1000)">
+  <input type="button" value="toggle(1000)">
+  <div></div>
+</body>
+<script src="../jquery-1.12.3.min.js"></script>
+<script>
+  $('input:eq(0)').click(function(){
+    $('div').show()
+  })
+  $('input:eq(1)').click(function(){
+    $('div').hide()
+  })
+  $('input:eq(2)').click(function(){
+    $('div').toggle()
+  })
+  $('input:eq(3)').click(function(){
+    $('div').show(1000)
+  })
+  $('input:eq(4)').click(function(){
+    $('div').hide(1000)
+  })
+  $('input:eq(5)').click(function(){
+   setInterval(function(){
+       $('div').toggle(1000)
+   },500);
+  })
+
+</script>
+</html>

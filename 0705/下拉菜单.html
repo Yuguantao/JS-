@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    *{
+      margin: 0;
+      padding: 0;
+    }
+    li{
+      list-style: none;
+    }
+    a{
+      text-decoration: none;
+    }
+    .nav{
+      width: 320px;
+      height: 35px;
+      /*background-color: skyblue;*/
+      margin:0 auto;
+    }
+    li{
+      width: 150px;
+      height: 35px;
+      background-color: orangered;
+      position: relative;
+      font-size: 15px;
+      line-height: 35px;
+      text-align: center;
+      margin-right:10px;
+      float: left;
+    }
+    .inner{
+      background-color: orange;
+    }
+    .dropbox{
+      width: 150px;
+      height: 150px;
+      background-color: blue;
+      position: absolute;
+      top: 35px;
+      left: 0;
+      display: none;
+    }
+    p{
+      width: 150px;
+      height: 50px;
+      font-size: 15px;
+      line-height: 50px;
+      text-align: center;
+    }
+    p:hover{
+      background-color: #666;
+    }
+  </style>
+</head>
+<body>
+  <!--div.nav>ul>li*5>a+div.dropbox>div.inner>p*3>a-->
+  <div class="nav">
+    <ul>
+      <li><a href="#">北京欢迎你</a>
+        <div class="dropbox">
+          <div class="inner">
+            <p><a href="#">鸟巢</a></p>
+            <p><a href="#">水立方</a></p>
+            <p><a href="#">天安门</a></p>
+          </div>
+        </div>
+      </li>
+      <li><a href="#">山东欢迎你</a>
+        <div class="dropbox">
+          <div class="inner">
+            <p><a href="#">青岛</a></p>
+            <p><a href="#">烟台</a></p>
+            <p><a href="#">济南</a></p>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+  <script src="../jquery-1.12.3.min.js"></script>
+  <script>
+    $('.nav ul li').mouseenter(function(){
+      $(this).find('.dropbox').stop(true).slideDown(400);
+    })
+    $('.nav ul li').mouseleave(function(){
+      $(this).find('.dropbox').stop(true).slideUp(400);
+    })
+  </script>
+</body>
+</html>

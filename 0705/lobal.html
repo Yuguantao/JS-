@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+  <style>
+    div{
+      width: 100px;
+      height: 100px;
+      background-color: red;
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <label><input type="checkbox">十天内免登陆</label>
+  <div>哈哈哈哈啊哈哈</div>
+</body>
+<script src="../jquery-1.12.3.min.js"></script>
+<script>
+  $('label').mouseenter(function(){
+    $('div').show();
+  })
+  $('label').mouseout(function(){
+    $('div').hide();
+  })
+</script>
+</html>
