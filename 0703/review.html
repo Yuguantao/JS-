@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <title></title>
+  </head>
+  <body>
+    <script>
+      var xiaolei = {
+        'name':'fish',
+        'age':18,
+        'soulmate':{
+          'name':'GG',
+          'age':18
+        }
+      }
+      var xiaohu = clone(xiaolei);
+      console.log(xiaohu);
+
+      function clone(origin){
+        var dest = {};
+        for(var k in origin){
+          dest[k] = origin[k];
+        }
+        return dest;
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title></title>
+  <style>
+    input{
+      vertical-align: middle;
+    }
+  </style>
+</head>
+<body>
+  <form action="" id="biaodan">
+    <p>姓名：<input name = "name" type="text"></p>
+    <p> 男<input type="radio" name="sex"value="男">
+        女<input type="radio" name="sex"value="女">
+    </p>
+    <p>
+      <input type="checkbox" name="city" value="上海">上海
+      <input type="checkbox" name="city" value="北京">北京
+      <input type="checkbox" name="city" value="深圳">深圳
+    </p>
+    <p>
+      <select name="hobby" id="">
+        <option value="10">吃饭</option>
+        <option value="11">睡觉</option>
+        <option value="12">打豆豆</option>
+      </select>
+    </p>
+    <p>
+      <textarea name="text" cols="30" rows="10">
+
+      </textarea>
+    </p>
+    <input type="button" value="提交" id="oBtn">
+
+  </form>
+</body>
+<script src="main.js"></script>
+<script>
+
+  $('#oBtn').click(function(){
+    var element = $('#biaodan')[0].elements;
+    var arr = [];
+    for(var i = 0;i<element.length;i++){
+      var e = element[i];
+      switch(e.type){
+        case 'button':
+        case 'submit':
+        case 'reset' :
+          break;
+        case 'text':
+        case 'password':
+        case 'textarea':
+          arr.push(e.name + "=" + e.value);
+          break;
+        case 'radio':
+        case 'checkbox':
+          e.checked && arr.push(e.name +'='+e.value);
+          break;
+        case 'select-one':
+        case 'select-multiple':
+          var options = e.getElementsByTagName('option');
+          console.log(options);
+          for(var j = 0;j<options.length;j++){
+            if(options[j].selected){
+              arr.push(e.name+'='+options[j].value)
+            }
+          }
+          break;
+      }
+    }
+    console.log(arr.join('&'));
+  })
+</script>
+</html>
