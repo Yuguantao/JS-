@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+
+</body>
+<script src="underscore.js"></script>
+<script>
+  //shuffle函数
+//  var arr = [1,2,3,4,5,6,7,9,8];
+//  console.log(_.shuffle(arr));
+
+
+  //sample函数
+//  var arr = [1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20];
+//  var arr2 = _.sample(arr,6);
+//  console.log(arr2);
+
+  //each
+//  var arr = ["东风","幺鸡","八万","一饼"];
+//  _.each(arr,function(item){
+//    console.log(item);
+//  });
+
+
+  //filter 筛选
+//  var arr = [
+//    {"xingming":"小明","age":12,"sex":"男"},
+//    {"xingming":"小红","age":18,"sex":"女"},
+//    {"xingming":"小绿","age":2,"sex":"女"},
+//    {"xingming":"小刚","age":2,"sex":"男"},
+//    {"xingming":"小灰","age":12,"sex":"男"}
+//  ];
+//
+//  var result = _.filter(arr,function(item){
+//    return item.age > 10;
+//  });
+//  console.log(result);
+
+
+  //contains 检测数组中是否包含某项   返回值true||false
+//  var arr = ["东风","幺鸡","八万","一饼"];
+//  var result = _.contains(arr,"八万");
+//  console.log(result);
+
+
+  //_.indexOf 寻找指定项  找不到返回-1
+//  var arr = ["东风","幺鸡","八万","一饼"];
+//  alert(_.indexOf(arr,"八万"));
+
+
+  //sortBy 排序
+//  var arr = [
+//    {"xingming":"小明","age":12,"sex":"男"},
+//    {"xingming":"小红","age":18,"sex":"女"},
+//    {"xingming":"小绿","age":2,"sex":"女"},
+//    {"xingming":"小刚","age":2,"sex":"男"},
+//    {"xingming":"小灰","age":12,"sex":"男"}
+//  ];
+//  // 按年龄排序：
+//  var result = _.sortBy(arr,function(item){
+//    return item.age;
+//  });
+//
+//  console.log(result);
+
+
+  //countBy 统计
+//  var arr = [
+//    {"xingming":"小明","age":22,"sex":"男"},
+//    {"xingming":"小红","age":18,"sex":"女"},
+//    {"xingming":"小绿","age":2,"sex":"女"},
+//    {"xingming":"小刚","age":2,"sex":"男"},
+//    {"xingming":"小灰","age":12,"sex":"男"}
+//  ];
+//  var result = _.countBy(arr,function(item){
+//    if(item.age >= 18){
+//      return "成年人";
+//    }else{
+//      return "未成年人";
+//    }
+//  });
+//  console.log(result);
+
+
+  //union 数组合并去重
+//  var arr = _.union(['a','a','b','b',3,4,4,'b',6]);
+//  console.log(arr);
+
+
+//  _.template()函数：
+
+//  //① 模板字符串
+//  var str = "我是<%=name%>,我<%=nianling%>岁了,我是<%=xingbie%>。";
+//  //② 得到一个函数，模板编译函数
+//  var compiled = _.template(str);
+//  //③ 运行这个函数，参数是字典，返回值是数据绑定之后的字符串
+//  var result = compiled({
+//    "name" : "小明",
+//    "nianling" : 12,
+//    "xingbie" : "男"
+//  });
+//
+// console.log(result);
+
+
+
+</script>
+</html>
