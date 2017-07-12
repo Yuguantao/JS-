@@ -1,0 +1,220 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta http-equiv="charset" content="utf-8">
+<meta http-equiv="content-language" content="utf-8">
+<meta http-equiv="MSThemeCompatible" content="Yes">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+<meta http-equiv="expires" content="Thursday 7 November 2013 01:00 GMT" />
+<title>仿QQ浏览器8主页 html+css3特效</title>
+<meta name="keywords" content="仿QQ浏览器8主页 html+css3特效">
+<meta name="description" content="仿QQ浏览器8主页 html+css3特效">
+<link rel="shortcut icon" href="jq22/images/favicon.ico"/>
+<script type="text/javascript" src="./jq22/js/jquery-1.11.1.min.js"></script>
+<script type="text/javascript" src="./jq22/js/jquery.mousewheel.js"></script>
+<script type="text/javascript" src="./jq22/js/jquery.velocity.min.js"></script>
+<link rel="stylesheet" type="text/css" href="./jq22/css/style.css">
+<script type="text/javascript" src="./jq22/js/core.js"></script>
+<style type="text/css">
+h1,h2{
+	font-size:12px;
+	overflow:hidden;
+	text-indent:-1000px;
+}
+</style>
+</head>
+<body>
+<div id="stage">
+<div>
+	<h1>浏览器</h1>
+	<h2>QQ浏览器始终追求最极致的浏览体验</h2>
+	<h2>多彩你的浏览，多彩你的生活</h2>
+	<h2>我们始终追求最可靠的网络安全服务</h2>
+</div>
+<div id="bg">
+    <div class="row1">
+        <div class="orb1"><div></div></div>
+        <div class="orb2"><div></div></div>
+        <div class="orb1c"><div></div></div>
+        <div class="orb2c"><div></div></div>
+    </div>
+    <div class="row2">
+        <div class="orb1"><div></div></div>
+        <div class="orb2"><div></div></div>
+        <div class="orb1c"><div></div></div>
+        <div class="orb2c"><div></div></div>
+    </div>
+    <div class="row3">
+        <div class="orb1"><div></div></div>
+        <div class="orb2"><div></div></div>
+        <div class="orb1c"><div></div></div>
+        <div class="orb2c"><div></div></div>
+    </div>
+    <div class="row1c">
+        <div class="orb1"><div></div></div>
+        <div class="orb2"><div></div></div>
+        <div class="orb1c"><div></div></div>
+        <div class="orb2c"><div></div></div>
+    </div>
+    <div class="row2c">
+        <div class="orb1"><div></div></div>
+        <div class="orb2"><div></div></div>
+        <div class="orb1c"><div></div></div>
+        <div class="orb2c"><div></div></div>
+    </div>
+    <div class="row3c">
+        <div class="orb1"><div></div></div>
+        <div class="orb2"><div></div></div>
+        <div class="orb1c"><div></div></div>
+        <div class="orb2c"><div></div></div>
+    </div>
+</div>
+<div id="container" style="display:none">
+    <div class="layer1">
+        <div class="orbit2"></div>
+    </div>
+    <div class="linecontainer">
+        <div class="track">
+            <div class="line"></div>
+        </div>
+        <div class="track1">
+            <div class="line"></div>
+        </div>
+        <div class="track2">
+            <div class="line"></div>
+        </div>
+    </div>
+    <div class="layer2">
+        <div class="orbit"></div>
+    </div>
+    <div class="layer3">
+        <div class="orbit1"></div>
+    </div>
+</div>
+
+<div id="p1">
+    <div id="p1_ui_0"></div>
+    <div id="p1_t_1"></div>
+    <div id="p1_t_2">
+	<div style="font-family:微软雅黑;position:absolute;width:500px;left:50%;top:50%;margin-left:-250px;margin-top:-80px;font-size:12px;line-height:2em;text-align:center;">
+	颠覆性的UI设计，追求极简与聚焦，再次引领设计风潮<br>内核架构全新升级，Chrome Tab 高速组件+自带IE高级内核，再次挑战性能极致<br>新一代防假死技术，浏览快速稳定，拒绝卡顿
+	</div>
+	</div>
+
+</div>
+<div id="p2">
+    <div id="p2_pop">
+            <div id="p2_pop_1"></div>
+            <div id="p2_pop_2"></div>
+            <div id="p2_pop_3"></div>
+            <div id="p2_pop_4"></div>
+    </div>
+    <div id="p2_t_1"></div>
+</div>
+<div id="p2_t_2">
+<div style="font-family:微软雅黑;position:absolute;width:500px;left:50%;top:50px;margin-left:-250px;font-size:12px;line-height:2em;text-align:center;">
+	多彩皮肤，标签智能取色；工具栏全新升级，应用中心丰富强大<br>微信聊天，跨屏穿越，Wifi共享，全面拥抱移动互联网，多屏生活享无限便利
+	</div>
+</div>
+<div id="p3">
+    <div id="p3_t_1"></div>
+    <div id="p3_t_2">
+	<div style="font-family:微软雅黑;position:absolute;width:500px;left:50%;top:60px;margin-left:-250px;font-size:12px;line-height:2em;text-align:center;">
+	腾讯电脑管家安全云库，专项6层防护，全面保护上网安全<br>全面颠覆上网场景，网购、支付、游戏、帐号，享受一站式安全防护
+	</div>
+	</div>
+    <div id="p3_defence">
+    </div>
+    <div id="p3_list"></div>
+    <div id="p3_point">
+        <div class="pt1"></div>
+        <div class="pt2"></div>
+        <div class="pt3"></div>
+        <div class="pt4"></div>
+        <div class="pt5"></div>
+    </div>
+</div>
+<div id="p0">
+    <div id="p0_t_1">
+        <div id="p0_8_1"></div>
+        <div id="p0_8_2"></div>
+    </div>
+    <div id="p0_t_2">
+        <div id="slogan_1"></div>
+        <div id="slogan_2"></div>
+		<!-- <a href="#" target="_blank" onclick="report('BROWSER.ACTIVITY.TICKET.DOWNLOAD');"> -->
+		<div id="slogan_3"></div>
+		<!-- </a> -->
+        <div id="slogan_4"></div>
+    </div>
+
+    <div id="p0_btn" style="display:none">
+        <a id="p0_btn_pc" name="qb8_download" href="#" title="点击安装QQ浏览器" alt="点击安装QQ浏览器"><img src="jq22/images/p0btn.png" alt="点击安装QQ浏览器"></a>
+        <a id="p0_btn_beta" style="display:none;position:absolute;left:-200px;top:0px" name="qb8_download_beta" href="#" title="点击安装BETA版" alt="点击安装BETA版"><img src="jq22/images/btnbeta.png" alt="点击安装BETA版"></a>
+		<a style="display:none" id="p0_btn_mac" name="qbmac_download" href="#" title="点击下载QQ浏览器" alt="点击下载QQ浏览器"><img src="jq22/images/p0btnmac.png" alt="点击下载QQ浏览器"></a>
+        <span>2月7日更新 jq22.3正式版 4.74M</span>
+    </div>
+</div>
+</div>
+<div id="additional" style="font-size:12px;font-family:'Helvetica'">
+    <div id="add_lefttop" style="position:absolute;left:10px;top:20px;opacity:0">
+        <img src="jq22/images/additional_logo.png" alt="QQ浏览器8">
+        <a name="qb8_download" href="#" title="点击下载QQ浏览器" alt="点击下载QQ浏览器"><img src="jq22/images/additional_btn.png" alt="点击下载QQ浏览器"></a>
+    </div>
+    <div id="add_leftbottom" style="position:absolute;left:22px;bottom:20px;">
+        © 2015 Tencent
+    </div>
+    <div id="add_rightbottom" style="position:absolute;right:22px;bottom:20px;font-family:'Helvetica','微软雅黑',san-serif">
+
+        <a href="index_m_7.0.html" target="_blank" onclick="pgvSendClick({hottag:'browser.qb7'});"><img src="jq22/images/qb7_btn.png" alt="QQ浏览器7" style="position:absolute;right:0;bottom:30px;"></a>
+        <a href="#" onclick="pgvSendClick({hottag:'browser.qb8.gotobbs'});" target="_blank" title="QQ浏览器官方论坛" alt="QQ浏览器官方论坛">官方论坛</a> <span style="opacity:0.5">｜</span>
+        <a href="#" target="_blank" rel="nofollow" title="QQ浏览器特权中心" alt="QQ浏览器特权中心">特权中心</a> <span style="opacity:0.5">｜</span>
+		<a href="#" title="查看版本升级日志" alt="查看版本升级日志" target="_blank" onclick="pgvSendClick({hottag:'browser.qb8.updatalog'});">升级日志</a> <span style="opacity:0.5">｜</span>
+        <a href="#" title="查看常见问题" alt="查看常见问题" target="_blank" class="updatalog" onclick="pgvSendClick({hottag:'browser.qb8.faqlog'});">在线帮助</a> <span style="opacity:0.5">｜</span>
+        <a href="#" title="QQ浏览器 for Mac 官方网站" alt="QQ浏览器 for Mac 官方网站" target="_blank" onclick="pgvSendClick({hottag:'browser.qb8.mac'});">QQ浏览器 for Mac</a>
+    </div>
+    <div id="add_nav">
+        <div class="on"></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+    <div id="add_scrolling" onClick="motion(true)" style="cursor:pointer"></div>
+</div>
+<div id="add_links" style="text-align:left;line-height:32px">
+	<a href="#" target="_blank" title="腾讯QQ" alt="QQ音乐">腾讯QQ</a><span>|</span>
+    <a href="#" target="_blank" title="QQ音乐" alt="QQ音乐">QQ音乐</a><span>|</span>
+    <a href="#" target="_blank" title="腾讯大学" alt="腾讯大学">腾讯大学</a><span>|</span>
+	<a href="#" target="_blank" title="广点通" alt="广点通">广点通</a><span>|</span>
+    <a href="#" target="_blank" title="WP之家" alt="WP之家">WP之家</a><span>|</span>
+    <a href="#" target="_blank" title="绿色下载" alt="绿色下载">绿色下载</a><span>|</span>
+    <a href="#" target="_blank" title="久友下载" alt="久友下载">久友下载</a><br>
+    <a href="#" target="_blank" title="JZ5U下载" alt="JZ5U下载">JZ5U下载</a><span>|</span>
+    <a href="#" target="_blank" title="安卓软件" alt="安卓软件">安卓软件</a><span>|</span>
+    <a href="#" target="_blank" title="酷玩汇" alt="酷玩汇">酷玩汇</a><span>|</span>
+    <a href="#" target="_blank" title="公交查询" alt="公交查询">公交查询</a><span>|</span>
+    <a href="#" target="_blank" title="蚕豆网" alt="蚕豆网">蚕豆网</a>
+</div>
+<!-- <a href="#" target="_self" id="gotomac" title="QQ浏览器 for Mac 官方网站" alt="QQ浏览器 for Mac 官方网站" onclick="pgvSendClick({hottag:'browser.qb8.mac'});" style="display:none">
+</a> -->
+<script type="text/javascript" src="./jq22/js/retina.min.js"></script>
+<!-- 统计 -->
+<script type="text/javascript" src="./jq22/js/tcss.ping.js"></script>
+<script type="text/javascript">
+if(typeof(pgvMain) == 'function') {
+    pgvMain("pathtrace", {pathStart: true, tagParamName: "ADTAG", useRefUrl: true, override: true, careSameDomainRef: false});
+
+    $('[name="qb8_download"]').on('click', function () {
+        var val = 'browser.qb8.download';
+        var result = location.search.match(/ADTAG=([^&]+)/);
+        if (result && result.length == 2) {
+            val += '.' + result[1];
+        }
+        pgvSendClick({hottag:val});
+    });
+}
+</script>
+</body>
+</html>

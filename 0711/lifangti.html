@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <style>
+    .stage {
+      width: 300px;
+      height: 300px;
+      margin: 100px auto;
+      perspective: 1500px;
+    }
+    .unit {
+      width: 150px;
+      height: 150px;
+      position: relative;
+    }
+    .unit img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 150px;
+      height: 150px;
+    }
+    .unit img.boy {
+      transform: rotateX(90deg) translateZ(75px);
+    }
+    .unit img.girl {
+      transform: translateZ(75px);
+    }
+    .unit img.left {
+      transform: rotateY(-90deg) translateZ(75px);
+    }
+    .unit img.right {
+      transform: rotateY(90deg) translateZ(75px);
+    }
+    .unit img.bottom {
+      transform: rotateX(-90deg) translateZ(75px);
+    }
+    .unit img.back {
+      transform: rotateX(180deg) translateZ(75px);
+    }
+    .unit {
+      transform-style: preserve-3d;
+      transition: all 5s ease 0s;
+    }
+    .stage:hover .unit {
+      transform: rotateX(720deg) rotateY(720deg);
+    }
+  </style>
+
+  </head>
+  <body>
+    <div class="stage">
+      <div class="unit">
+        <img class="boy" src="image/demon.jpg" alt="">
+        <img class="girl" src="image/jarvaniv.jpg" alt="">
+        <img class="left" src="image/jax.jpg" alt="">
+        <img class="right" src="image/Mangi.jpg" alt="">
+        <img class="bottom" src="image/monkey.jpg" alt="">
+        <img class="back" src="image/mordekaiser.jpg" alt="">
+
+      </div>
+    </div>
+  </body>
+</html>

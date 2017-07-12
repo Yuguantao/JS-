@@ -1,0 +1,104 @@
+
+li{
+  list-style: none;
+}
+a{
+  text-decoration: none;
+}
+
+.page0-div{
+    position: relative;
+    width: 800px;
+    height: 600px;
+    top:-25px;
+    margin:0 auto;
+    background-color: orangered;
+    perspective: 500px;
+}
+.logo{
+  float: left;
+  margin:13px 0 20px 0;
+}
+.load{
+  float: right;
+  cursor: pointer;
+}
+.updata{
+  float: right;
+  width: 300px;
+  font-size: 15px;
+  color:#7A7C7F;
+  margin-top: 8px;
+}
+.slogan{
+  width: 800px;
+  height: 320px;
+  background: url(../image/skin.gif) ;
+  position: relative;
+  /*border-color: yellow;*/
+  float: left;
+  margin-top:135px;
+  opacity: 0;
+}
+.slogan1{
+  width: 600px;
+  height: 110px;
+  background-color: #fffs;
+  margin:0 auto;
+  text-align: center;
+}
+.slogan1 h2{
+  font-size: 50px;
+  font-weight: normal;
+  color: #1E2123;
+}
+.slogan1 p{
+  margin-top:18px;
+  font-size: 17px;
+  color:#7A7C7F;
+}
+
+.slogan{
+  transition: all 1s;
+  transform:  rotateX(-12deg) translateZ(500px);
+}
+.page0-div:hover .slogan{
+  opacity: 1;
+  transform: none;
+}
+
+.page1-div{
+  width: 1350px;
+  height: 600px;
+  margin: 0 auto;
+  background-color: yellow;
+  perspective: 1000px;
+  transition: all 2s;
+}
+.slogan3{
+  width: 381px;
+  height: 381px;
+  background-color: skyblue;
+  position: relative;
+}
+#layer2,#layer3,#layer4,#layer5{
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+#layer4{
+  transition: all 1s ;
+  transform: rotateZ(-70deg);
+}
+.page1-div:hover #layer4{
+  transform:rotateZ(0deg);
+}
+
+.slogan3{
+  transition: all 3s;
+  transform: rotateY(270deg) rotateZ(90deg);
+}
+.page1-div:hover .slogan3{
+  transform-origin: left left ;
+  transform: scale(1) rotateY(0deg);
+}

@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="css/index.css">
+    <style media="screen">
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html, body, .container, .page{
+        height: 100%;
+        width: 100%;
+      }
+      html, body {
+        overflow: hidden;
+      }
+      .container {
+        position: absolute;
+        top: 0;
+        left: 0;
+      }
+      .page0 { background: hsl(181, 45%, 52%); }
+      .page1 { background: hsl(181, 55%, 62%); }
+      .page2 { background: hsl(181, 65%, 72%); }
+      .page3 { background: hsl(181, 75%, 82%); }
+    </style>
+  </head>
+  <body>
+    <div id="container" class="container">
+      <div class="page page0">
+        <h1>0</h1>
+        <div class="page0-div">
+          <img class = "logo" src="image/title2_1.png" alt="">
+          <img class = "load" src="image/btn.png" alt="">
+          <p class = "updata">　　　　　　　 7月7日更新9.6.3正式版</p>
+          <div class="slogan">
+            <div class="slogan1">
+              <h2>找 到 属 于 你 的 浏 览 器</h2>
+              <p>新增百款精美皮肤，不止于简洁好用</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="page page1">
+        <h1>1</h1>
+        <div class="page1-div">
+          <div class="slogan3">
+            <div id="layer2"><img src="image/layer_main_gradient.png"></div>
+            <div id="layer3"><img src="image/layer_main_line.png"></div>
+            <div id="layer4"><img src="image/layer_main_pointer.png"></div>
+            <div id="layer5"><img src="image/layer_main_num43.png"></div>
+          </div>
+        </div>
+      </div>
+      <div class="page page2">
+        <h1>2</h1>
+      </div>
+      <div class="page page3">
+        <h1>3</h1>
+      </div>
+    </div>
+
+    <script type="text/javascript">
+      var index = 0;
+      var container = document.getElementById("container");
+      var mousewheelHandler = function(e) {
+        // console.log('1');
+        e = e || window.event;
+        if (e.preventDefault) {
+          e.preventDefault();
+        } else {
+          e.returnValue = false;
+        }
+
+        if (e.wheelDelta) {
+          var direction = e.wheelDelta > 0 ? 1 : -1;
+        } else {
+          var direction = e.detail > 0 ? -1 : 1;
+        }
+        index -= direction;
+        if (index < 0) {
+          index = 0;
+        } else if (index > 3) {
+          index = 3;
+        }
+        container.style.top = -index * 100 + "%";
+      }
+      document.onmousewheel = mousewheelHandler;
+      try {
+        document.addEventListener('DOMMouseScroll', mousewheelHandler, false);
+      } catch (error) {
+      }
+    </script>
+  </body>
+</html>
