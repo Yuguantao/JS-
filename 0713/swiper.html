@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="script/swiper-3.4.2.min.css">
+</head>
+<body>
+      <div class="swiper-container">
+      <div class="swiper-wrapper">
+          <div class="swiper-slide"><img src="image/bg.gif" alt=""></div>
+          <div class="swiper-slide"><img src="image/bg.gif" alt=""></div>
+          <div class="swiper-slide"><img src="image/bg.gif" alt=""></div>
+      </div>
+      <!-- 如果需要分页器 -->
+      <div class="swiper-pagination"></div>
+
+      <!-- 如果需要导航按钮 -->
+      <div class="swiper-button-prev"></div>
+      <div class="swiper-button-next"></div>
+
+      <!-- 如果需要滚动条 -->
+      <div class="swiper-scrollbar"></div>
+    </div>
+    <script src="script/swiper-3.4.2.min.js"></script>
+    <script>
+      var mySwiper = new Swiper ('.swiper-container', {
+      // direction: 'vertical',
+      loop: true,
+      autoplay:1000,
+
+      // 如果需要分页器
+      pagination: '.swiper-pagination',
+
+      // 如果需要前进后退按钮
+      nextButton: '.swiper-button-next',
+      prevButton: '.swiper-button-prev',
+
+      // 如果需要滚动条
+      scrollbar: '.swiper-scrollbar',
+    })
+    </script>
+</body>
+</html>
